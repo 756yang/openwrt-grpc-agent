@@ -1,0 +1,8 @@
+menu "Configuration"
+	depends on PACKAGE_libgrpc-dev
+
+config GRPC_PROTO_FULL
+	bool
+	prompt "Compile using the full version of the protobuf library"
+
+endmenu

@@ -1,2 +1,2 @@
-# openwrt-grpc-agent
-Used for openwrt to remotely execute programs through `grpc`
+# openwrt-grpc-exec
+Used for openwrt to remotely execute programs through GRPC.
