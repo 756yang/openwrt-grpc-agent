@@ -33,7 +33,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 # executing host tools requires linking libraries
-export LD_LIBRARY_PATH += :$(STAGING_DIR_HOSTPKG)/lib
+export LD_LIBRARY_PATH += :$(HOST_BUILD_PREFIX)/lib
 
 GRPC_CFLAGS:=$(TARGET_CFLAGS)
 GRPC_CXXFLAGS:=$(TARGET_CXXFLAGS)
