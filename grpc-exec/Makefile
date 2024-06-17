@@ -25,7 +25,9 @@ export LD_LIBRARY_PATH += :$(STAGING_DIR_HOSTPKG)/lib
 # link library: atomic math
 TARGET_LDFLAGS += -latomic $(if $(CONFIG_USE_GLIBC),-lm)
 
-CMAKE_OPTIONS += -DBUILD_SHARED_LIBS=OFF
+CMAKE_OPTIONS += -DBUILD_SHARED_LIBS=OFF \
+	-DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER \
+	-DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
 
 define Package/$(PKG_NAME)
   SECTION:=base
@@ -39,17 +41,12 @@ GRPC utility, provide remote execution of programs.
 endef
 
 define Package/$(PKG_NAME)/conffiles
-xxx
 endef
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/libgrpc++.so.1 $(1)/usr/lib/libgrpc++.so.1
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/libgrpc.so.4 $(1)/usr/lib/libgrpc.so.4
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/grpcService $(1)/usr/bin/grpcService
- 	$(INSTALL_DIR) $(1)/etc/init.d
- 	$(INSTALL_BIN) files/grpcservice.initd $(1)/etc/init.d/grpcservice
+	$(INSTALL_DIR) $(1)/etc/init.d
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
