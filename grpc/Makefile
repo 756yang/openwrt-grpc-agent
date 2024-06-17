@@ -113,7 +113,6 @@ define Package/libgrpc-dev
   TITLE:=gRPC is an RPC library and framework
   DEPENDS:=+libstdcpp +libatomic +libpthread +re2 +zlib +libcares +protobuf$(if $(CONFIG_GRPC_PROTO_FULL),,-lite)
   URL:=https://github.com/grpc/grpc
-  MENU:=1
 endef
 
 define Package/libgrpc-dev/description
