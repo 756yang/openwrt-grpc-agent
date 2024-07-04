@@ -1,0 +1,12 @@
+
+config grpc_exec 'config'
+	option mode 'server'
+	#option mode 'client'
+	option address '0.0.0.0:5001'
+
+config grpc_shell 'ticket'
+	option address 'unix-abstract:grpc_exec%00abstract'
+	list command '/password@root@100/echo'
+	list scripts '/usr/bin/echo'
+	list command 'hello/'
+	list scripts 'echo hello world'
